@@ -13,11 +13,11 @@ resources:
           - dev
 
 jobs:
-  - template: templates/multi-arch-build.yaml
+  - template: templates/build.yaml
     parameters:
       architectures:
         - jetson-nano
       image: opencv-part1
-  - template: templates/multi-arch-build.yaml
+  - template: templates/build.yaml
     parameters:
       image: opencv
