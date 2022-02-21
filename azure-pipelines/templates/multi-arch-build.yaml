@@ -10,14 +10,13 @@ parameters:
   - name: image
     type: string
 
-strategy:
-  matrix:
-    ${{ each architecture in parameters.architectures }}:
-      ${{ architecture }}:
-        architecture: ${{ architecture }}
-
 jobs:
-  - template: build.yaml
+  - strategy:
+      matrix:
+        ${{ each architecture in parameters.architectures }}:
+          ${{ architecture }}:
+            architecture: ${{ architecture }}
+    template: build.yaml
     parameters:
       architecture: $(architecture)
       image: ${{ parameters.image }}
